@@ -32,7 +32,7 @@ greeting("rin");
 ```
 함수 실행시 보이는 알림창
 
-![Alt text](../IMG//greeting.jpg)
+![Alt text](../IMG//greeting.JPG)
 
 ## 함수 return
 
