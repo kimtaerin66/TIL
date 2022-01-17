@@ -47,7 +47,7 @@ title.onclick = handleTitleClick;
 ```
 
 ## 사용할 수 있는 이벤트 찾기
-MDN을 검색하거나, console.dir로 찾을 수 있다.
+MDN을 검색하거나, console.dir로 찾을 수 있다. (console.dir(title))
 
 mdn을 검색할때 api가 붙은 자료를 보면.
 자바스크립트의 관점에서의 정보들을 알 수 있다.
