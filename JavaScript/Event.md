@@ -1,0 +1,98 @@
+# Event
+자바스크립트에서 이벤트란 어떠한 일이 발생했음을 의미한다.
+
+예를 들어 사용자가 마우스를 클릭하거나, 키보드를 치거나,
+또 와이파이가 연결되거나, 끊기거나 등
+
+
+## 이벤트 타입
+발생한 이벤트의 종류를 말한며 키보드, 마우스, html, dom, window 등이 있다.
+
+## 이벤트 리스너, 이벤트 핸들러
+
+이러한 이벤트를 만들기위해선 이벤트를 등록하고(이벤트리스너), 해당 이벤트가 발생될 때
+
+실행될 함수를 만들어야한다(이벤트 핸들러). 
+
+# 이벤트 만들기
+이벤트 만들기에는 두 가지 방법이있다.  
+- addEventListener 사용하기
+
+    이벤트대상.addEventListener('이벤트명', 실행할 함수명);
+- on 사용하기
+
+    이벤트대상.on이벤트명 = 실행할 함수명;
+
+
+예) h1을 클릭했을 때 title의 내용이 바뀌는 이벤트를 만들어보자.
+```
+//html 예시
+<body>
+    <div class="container">
+      <h1>Hello</h1>
+    </div>
+
+</body>
+
+const title = document.querySelector('h1');
+
+function handleTitleClick (){    //click이라는 이벤트 발생시, handleTitleClick 함수 실행
+    title.innerText = ""I'm event!;
+}
+
+//addEventListener 사용
+title.addEventListener("click", handleTitleClick);
+//on 사용
+title.onclick = handleTitleClick;
+```
+
+## 사용할 수 있는 이벤트 찾기
+MDN을 검색하거나, console.dir로 찾을 수 있다.
+
+mdn을 검색할때 api가 붙은 자료를 보면.
+자바스크립트의 관점에서의 정보들을 알 수 있다.
+https://developer.mozilla.org/en-US/docs/Web/API/Element
+
+## toggle 사용하기
+toggle을 사용하면 동일한 이벤트를 굉장히 짧은 코드로 만들 수 있다.
+
+예) title을 클릭하면 글자의 색깔이 파랑으로 바뀌고, 다시 클릭하면 빨강으로 바뀐다. (반복)
+
+```
+//if-else만 사용했을 때
+const title = document.querySelector('h1');
+title.style.color = "red";
+
+function handleTitleClick(){
+    if(title.style.color === "red"){
+        title.style.color = "blue"
+    } else if(title.style.color === "blue") {
+        title.style.color = "red"
+    }
+    
+}
+
+title.addEventListener("click", handleTitleClick);
+```
+```
+//toggle을 사용할 때
+//css로 변경할 내용을 미리 만들어 준다.
+//css
+.title {
+    color: red;
+
+} 
+.active {
+    color: blue;
+}
+
+//js
+//toggle기능은 클래스가 없으면 붙이고, 있으면 떼주는 액션을 반복한다.
+const title = document.querySelector('h1');
+function handleTitleClick(){
+   title.classList.toggle("active");
+    
+}
+
+title.addEventListener("click", handleTitleClick);
+```
