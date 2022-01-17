@@ -96,3 +96,19 @@ function handleTitleClick(){
 
 title.addEventListener("click", handleTitleClick);
 ```
+
+## 기본이벤트 막기
+가끔 기본 이벤트 동작을 막아야 할때가 있는데, 
+실행되는 함수에 argument를 넣어 preventDefault를 실행해 기본동작을 막는다.
+
+```
+function onLoginSubmit(event){ 
+   event.preventDefault(); //기본동작 막기
+}
+```
+argument는 다른 단어를 사용해도되지만, 관습적으로 event나 e를 사용.
+해당 함수안에서 console.dir(event)를 해보면, 발생한 이벤트에 대한 정보를 확인할 수 있다.
+
+click이벤트인 경우 유저가 어느 부분을 클릭했는지
+submit의 경우 언제 제출이 되었는지 등
+
