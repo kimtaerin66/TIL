@@ -70,4 +70,50 @@ document.querySelector("ul li:first-child");
 ```
 
 
+## 유효성 검사
+
+일반적으로 웹사이트에서 회원가입을 할 때, 아이디는 몇자리 이상으로 해주세요.
+
+비밀번호는 특수문자와 숫자를 섞어 사용해야 합니다. 등의 조건이 있는데
+
+이를 유효성 검사라고 한다.
+
+html input태그에서 기본적으로 제공하는 속성.(form안에 작성해야만 한다)
+
+- required : 필수 입력값으로 유저가 입력하지않으면 경고창이 뜬다.
+
+- maxlength : 입력할 수 있는 최대글자수.
+
+- password : 비밀번호를 검은 동그라미로 표시.
+
+## localStorage
+
+user의 이름을 기억하거나, 볼륨 설정을 기억하는 등
+정보를 저장하고 나중에 불러와 쓸 수 있다.
+
+
+localStorage안의 내용을 보고싶다면
+개발자도구 > Appllication > localStorage
+
+참고: https://developer.mozilla.org/ko/docs/Web/API/Window/localStorage
+
+
+- 저장하기 setItem("key", "value")
+```
+//username rin을 저장할 때
+localStorage.setItem("username", "rin");
+```
+- 불러오기 getItem("key")
+```
+//username rin을 불러올 때
+localStorage.getItem("username");
+```
+- 저장된값 삭제 removeItem("key")
+```
+//username rin을 삭제할 때
+localStorage.removeItem("username");
+```
+
+
+
 
