@@ -11,26 +11,22 @@
 <div class="container">
 <h1 class="title">Random Number Game</h1>
 
-<form id="casino">
-    <strong> Generate a number between 0 and </strong>
-       <input type="number" name="userInput" required/>
-       <br>
+<form id="game-form">
+    <h3> Generate a number between 0 and 
+       <input type="number"
+              id="input1"
+              min="1"
+              required/>
+    </h3>
        Guess the number:
 <input type="number"
-       name="guessInput"
+       id="input2"
        required>
-        <button class="playBtn">Play!</button>
+        <button>Play!</button>
 
 </form> 
-
-   <div class="hidden answer">
-   <p> You chose : <span class="YouChose"></span>,  the machine chose : <span class="machineNumber"></span>. </p>
-  <h3 >You lost!</h3>
-</div>
-</div>
-
-
-
+   <span> </span>
+   <h4 ></h4>
     </div>
     <script src="app.js"></script>
 </body>
