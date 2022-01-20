@@ -1,0 +1,61 @@
+#   JSX
+
+JSX는 리액트를 만든 페이스북에서 리액트를 좀 더 잘 사용하기위해 만든 문법이다.
+
+자바스크립트를 확장한 문법으로, 마치 html과 자바스크립트를 섞여놓은 듯한 모습을 하고 있다. 
+
+JSX문법은 여러개의 특징을 가지고 있는데 이 특징을 지켜 사용해야 한다.
+
+
+## JSX 문법 규칙
+- 하나의 엘리먼트 안에 모든 엘리먼트가 포함되야 한다.
+```
+//잘못된 예
+<div>
+    <h1>jsx문법</h1>
+</div>
+<div>
+    <h2>바로알기</h2>
+</div>
+
+//올바른 예
+<div> //전체를 묶어주는 엘리먼트
+<div>
+    <h1>jsx문법</h1>
+</div>
+<div>
+    <h2>바로알기</h2>
+</div>
+</div>
+
+```
+- 클래스 사용시, class가 아닌 className을 사용한다.
+```
+<div className="container"> 
+    <div>
+        <h1>jsx문법</h1>
+    </div>
+    <div>
+        <h2>바로알기</h2>
+    </div>
+</div>
+```
+- 자바스크립트를 사용할 땐, 중괄호를 이용한다.
+```
+function Add(num){
+    const sum = num +2 ;
+    return (
+        <div>
+            result {sum}
+        </div>
+    )
+}
+```
+- 사용자 정의 컴포넌트는 대문자로 시작해야 한다.
+- 조건부 렌더링에는 삼항연산자를 사용한다. 
+```
+const age = 26;
+const beverage = (age >=21 ) ? "Beer" : "Juice";
+console.log(beverage);
+```
+- 여러개의 html 엘리먼트를 표시할 때는 map함수를 사용한다.
