@@ -59,3 +59,8 @@ const beverage = (age >=21 ) ? "Beer" : "Juice";
 console.log(beverage);
 ```
 - 여러개의 html 엘리먼트를 표시할 때는 map함수를 사용한다.
+
+## Babel
+JSX 코드를 브라우저가 이해할 수 있게 해주는 변환기.
+
+react를 사용하려면 babel을 설치해줘야 한다.
