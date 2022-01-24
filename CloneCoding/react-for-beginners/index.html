@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<!-- react internative 하게만듬 -->
+<!-- reactDom 모든 element를 html에 추가해줌-->
+<script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+<script type="text/babel">
+    const root = document.getElementById("root");
+    const Title = <h3 id="title" onMouseEnter={() => console.log("hi~~~")}>Hello I'm a title</h3>
+    //property는 html의 속성처럼 적어주면됨.
+    // const h3 = React.createElement( "h3",  {onMouseEnter:() =>console.log("mouse enter") },"Hello I'm a span" );
+    const btn = <button onClick={() =>console.log("hi~~~") }>click me</button>
+    // const btn = React.createElement("button", {onClick: () =>console.log("hi~~~")}, "click me");
+    const container = React.createElement("div", null, [h3, btn]);
+    ReactDOM.render(container, root);
+    //render는 사용자에게 보여준다. (보여줄 태그, 보여줄 위치)
+</script>
+</html>
