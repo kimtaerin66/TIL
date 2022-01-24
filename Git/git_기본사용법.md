@@ -37,3 +37,10 @@ git clone git주소.git까지
 # 푸시하기 origin 리포지토리의 master 브랜치.
 git push origin master 
 
+# 삭제하기
+git rm 파일명.js
+
+git commit -m "deletefile'
+
+커밋 + push 까지해야한다.
+
