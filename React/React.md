@@ -52,7 +52,7 @@ npm이 설치하는 프로그램이라면, npx 임시로 설치해서 딱한번�
 
 - class형
 
-![Alt text](../IMG/classComponent.jpg)
+![Alt text](../IMG/classComponent.JPG)
 1. class 필요
 2. component로 상속받아야 함.
 3. render() 메서드 필요
@@ -63,7 +63,7 @@ npm이 설치하는 프로그램이라면, npx 임시로 설치해서 딱한번�
 - 함수형
 
 
-![Alt text](../IMG/functionComponent.jpg)
+![Alt text](../IMG/functionComponent.JPG)
 1. 컴포넌트 선언 필요
 2. 클래스형봐 적은 메모리 사용.
 
