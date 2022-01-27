@@ -9,7 +9,7 @@ JSX문법은 여러개의 특징을 가지고 있는데 이 특징을 지켜 사
 
 ## JSX 문법 규칙
 - 하나의 엘리먼트 안에 모든 엘리먼트가 포함되야 한다.
-```
+```js
 //잘못된 예
 <div>
     <h1>jsx문법</h1>
@@ -30,7 +30,7 @@ JSX문법은 여러개의 특징을 가지고 있는데 이 특징을 지켜 사
 
 ```
 - 클래스 사용시, class가 아닌 className을 사용한다.
-```
+```js
 <div className="container"> 
     <div>
         <h1>jsx문법</h1>
@@ -41,7 +41,7 @@ JSX문법은 여러개의 특징을 가지고 있는데 이 특징을 지켜 사
 </div>
 ```
 - 자바스크립트를 사용할 땐, 중괄호를 이용한다.
-```
+```js
 function Add(num){
     const sum = num +2 ;
     return (
@@ -53,7 +53,7 @@ function Add(num){
 ```
 - 사용자 정의 컴포넌트는 대문자로 시작해야 한다.
 - 조건부 렌더링에는 삼항연산자를 사용한다. 
-```
+```js
 const age = 26;
 const beverage = (age >=21 ) ? "Beer" : "Juice";
 console.log(beverage);

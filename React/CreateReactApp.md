@@ -28,7 +28,7 @@ npm이 설치하는 프로그램이라면, npx 임시로 설치해서 딱한번�
 2. props로 style 받기
 
 예) Button 컴포넌트에 직접 스타일 작성
-```
+```js
 <Button style={{
     color: white;
     background-color: tomato;
@@ -41,13 +41,14 @@ npm이 설치하는 프로그램이라면, npx 임시로 설치해서 딱한번�
 3. css module
 
 예) Button.js가 있다면 Button.module.css 생성, css파일 연결이 아닌 스타일을 연결해준다.
-```
+```css
 //Button.module.css
 .btn {
     color: white;
     background-color: tomato;
 }
-
+```
+```js
 // Button.js(index.js가 아닌 해당 js)
 
 import styles from "./Button.module.css"

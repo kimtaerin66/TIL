@@ -19,7 +19,7 @@ state - 현재 사는 곳, 취업여부, 결혼/연애여부
 ## useState
 
 - useState 살펴보기
-```
+```js
 const data = React.useState();
 console.log(data);
  ```
@@ -35,8 +35,8 @@ console.log(data);
 1.  [값, 값을 변경시키는 함수] = React.useState(초기값); 
 2. 이벤트 연결할 함수생성 > 그안에 값을 변경시키는 함수(변경할 값)
 
-```
-예) 
+```js
+//예) 
 const [data, setData] = React.useState(0);
 function onClick = () => {
     setData(data = data + 1);

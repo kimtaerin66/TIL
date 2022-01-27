@@ -35,7 +35,7 @@ Save Changes
 
 Continue
 
-```
+```js
 //Btn 컴포넌트
 
 function Btn({text}){ //text로 받기
@@ -78,7 +78,7 @@ Btn대신 MemorizedBtn 사용;
 
 이렇게하면 변경되지 않는 Continue는 한번만 받아온다.
 
-```
+```js
   function Btn({text, changeValue}){ 
        return(
            <button 
@@ -118,7 +118,7 @@ Btn대신 MemorizedBtn 사용;
 
  예를 들어 버튼에 text는 string을 fontSize에는 number을 줘야하는데
  잘못줬을 경우.
- ```
+ ```js
  //올바른 예
  <Btn text="Save Change" fontSize={18} />
 
@@ -131,7 +131,7 @@ Btn대신 MemorizedBtn 사용;
 propTypes를 설치하고 사용할 컴포넌트에 prop가 어떠한 타입이 들어가는지 적어준다.
 
 fontSize처럼 마지막에 isRequired를 적어주면 꼭 입력해야하는 값으로 표시할 수 있다.
-```
+```js
   Btn.propTypes = {
        text: PropTypes.string,
        fontSize : PropTypes.number.isRequired, 
