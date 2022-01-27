@@ -25,7 +25,7 @@
 
 
 예) h1을 클릭했을 때 title의 내용이 바뀌는 이벤트를 만들어보자.
-```
+```html
 //html 예시
 <body>
     <div class="container">
@@ -33,7 +33,8 @@
     </div>
 
 </body>
-
+```
+```js
 const title = document.querySelector('h1');
 
 function handleTitleClick (){    //click이라는 이벤트 발생시, handleTitleClick 함수 실행
@@ -58,7 +59,7 @@ toggle을 사용하면 동일한 이벤트를 굉장히 짧은 코드로 만들 
 
 예) title을 클릭하면 글자의 색깔이 파랑으로 바뀌고, 다시 클릭하면 빨강으로 바뀐다. (반복)
 
-```
+```js
 //if-else만 사용했을 때
 const title = document.querySelector('h1');
 title.style.color = "red";
@@ -74,7 +75,7 @@ function handleTitleClick(){
 
 title.addEventListener("click", handleTitleClick);
 ```
-```
+```js
 //toggle을 사용할 때
 //css로 변경할 내용을 미리 만들어 준다.
 //css
@@ -101,7 +102,7 @@ title.addEventListener("click", handleTitleClick);
 가끔 기본 이벤트 동작을 막아야 할때가 있는데, 
 실행되는 함수에 argument를 넣어 preventDefault를 실행해 기본동작을 막는다.
 
-```
+```js
 function onLoginSubmit(event){ 
    event.preventDefault(); //기본동작 막기
 }

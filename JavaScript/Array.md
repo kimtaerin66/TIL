@@ -7,7 +7,7 @@
 
 굳이 변수를 하나하나 생성해야하고, 한번에 관리하기가 불편하다.
 
-```
+```js
 const dad = 'Dad';
 const mom = 'Mom';
 const sister = 'Sister';
@@ -18,7 +18,7 @@ const cat = 'Cat';
 ## 배열로 표현하면?
 하나의 변수(전체를 아우르는)를 생성해, 대괄호 안에 값을 넣는다.
 
-```
+```js
 const myFamily = ['Dad', 'Mom', 'Sister', 'Me', 'Cat'];
 ```
 배열안에는 string값은 물론 다른 모든 값을 사용할 수 있다. (null,변수,number..등)
@@ -28,7 +28,7 @@ const myFamily = ['Dad', 'Mom', 'Sister', 'Me', 'Cat'];
 myFamily에서 두번째에있는 Mom이라는 값을 가져오고 싶다면
 
 변수명[인덱스값]
-```
+``` js
 myFamily[1];
 ```
 Mom은 분명 두번째에 있는데 왜 1을 쓰냐면, 컴퓨터는 사람과 달리 숫자를 0부터 센다.
@@ -48,14 +48,14 @@ myFamily[3] = 'I';
 ## 배열의 값 추가
 - 배열의 앞에 추가 - unshift(추가할값)
 
-```
+```js
 myFamily.unshift('Grandfather');
 //출력 myFamily = ['Grandfather', 'Dad', 'Mom', 'Sister', 'Me', 'Cat'];
 ```
 
 - 배열의 뒤에 추가 - push(추가할값)
 
-```
+```js
 myFamily.push('Grandfather');
 //출력 myFamily = ['Dad', 'Mom', 'Sister', 'Me', 'Cat', 'Grandfather'];
 ```
@@ -63,19 +63,19 @@ myFamily.push('Grandfather');
 
 ## 배열의 값 삭제
 - 배열의 앞에서 삭제 - shift()
-```
+```js
 myFamily.shift();
 //출력 myFamily = ['Mom', 'Sister', 'Me', 'Cat'];
 ```
 - 배열의 뒤에서 삭제 - pop()
-```
+```js
 myFamily.pop();
 //출력 myFamily = 'Dad',['Mom', 'Sister', 'Me'];
 ```
 
 ## 배열에서 특정값 찾기
 myFamily에서 Cat의 위치를 알고 싶다면?
-```
+```js
 myFamily.indexOf('Cat')
 //출력 4 
 ```

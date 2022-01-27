@@ -11,7 +11,7 @@ document는 객체이고, 그안에서 사용할 수 있는 모든것들을 확�
 
 
 
-```
+```html
 //html 예시
 <body>
     <div class="container">
@@ -33,7 +33,7 @@ document는 객체이고, 그안에서 사용할 수 있는 모든것들을 확�
 옛날에는 getElementById, getElementByClassName 등의 매서드들을 사용했었는데
 getElementById는 말그대로 아이디만 찾을 수 있고, getElementByClassName은 class만 찾을
 수 있다. 따로 #나 .을 붙이지않아도 된다.
-```
+```js
 //사용법
 getElementById('title')
 getElementByClassName('title')
@@ -45,7 +45,7 @@ getElementByClassName('title')
  요즈음에는 querySelector를 이용해 원하는 아이디, 태그, 클래스를 다 찾을 수 있다.
 
  또 css방식이라 사용이 더 편리하다.
-```
+```js
 //title 클래스로 찾기
 document.querySelector(".title");
 //title id로 찾기
@@ -54,7 +54,7 @@ document.querySelector("#title");
 ```
 
 - 여러개 엘리먼트 선택하기 - querySelectorAll
-```
+```js
 //list라는 클래스를 가진 가장 상단 아이템1 선택.
 document.querySelector(".list");
 
@@ -64,7 +64,7 @@ document.querySelectorAll(".list");
 - 자식요소 찾기
 
 css 사용법과 동일하다.
-```
+```js
 //list의 첫번째 li 선택하기.
 document.querySelector("ul li:first-child");
 ```
@@ -99,21 +99,18 @@ localStorage안의 내용을 보고싶다면
 
 
 - 저장하기 setItem("key", "value")
-```
+```js
 //username rin을 저장할 때
 localStorage.setItem("username", "rin");
 ```
 - 불러오기 getItem("key")
-```
+```js
 //username rin을 불러올 때
 localStorage.getItem("username");
 ```
 - 저장된값 삭제 removeItem("key")
-```
+```js
 //username rin을 삭제할 때
 localStorage.removeItem("username");
 ```
-
-
-
 

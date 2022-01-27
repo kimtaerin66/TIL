@@ -12,7 +12,7 @@ xxx님, 안녕하세요! 라는 알림창를 보여주고 싶다.
 
 ## 함수 만들기
 
-```
+```js
 function greeting(user){
  alert(user +"님, 안녕하세요!")
 }
@@ -42,7 +42,7 @@ console.log나 alert으로 일시적으로 잠시보이는게 아닌,
 
 이것이 함수 밖으로 값을 출력하는 방법.
 
-```
+```js
 function greeting(user){
  return user +"님, 안녕하세요!";
 }
