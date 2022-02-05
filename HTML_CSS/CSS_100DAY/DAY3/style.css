@@ -1,0 +1,97 @@
+
+.frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+  border-radius: 2px;
+	box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.1);
+	overflow: hidden;
+  background: linear-gradient(70deg, #43389F, #4ec6ca);
+	font-family: 'Open Sans', Helvetica, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+ 
+}
+
+.number{
+    position: relative;
+    width: 200px;
+    height: 100px;
+   
+}
+.one {
+    position: absolute;
+    left: 0px;
+    top : 0px;
+	background: #fff;
+	width: 20px;
+	height : 40px;
+    border-radius: 3px;
+	display: inline-block;
+    transform: rotate(50deg);
+    box-shadow: -5px 3px 10px 1px rgba(0,0,0,0.1);
+
+}
+
+.two {
+    position: absolute;
+    top : 0.5px;
+    left: 14px;
+	background: #fff;
+	width: 24px;
+	height : 100px;
+    border-radius: 3px;
+	display: inline-block;
+    z-index: 5;
+    box-shadow: -5px 3px 10px 2px rgba(0,0,0,0.1);
+}
+
+.zero {
+    position: absolute;
+    top : 0.5px;
+    left: 30px;
+	width: 100px;
+	height : 100px;
+    border : 24px solid #fff;
+    box-sizing: border-box;
+    border-radius: 50px;
+	display: inline-block;
+    z-index: 4;
+    box-shadow: -5px 3px 10px 2px rgba(0,0,0,0.2);
+}
+
+.number span:last-child{
+    left: 110px;
+    z-index: 3;
+}
+
+.days, .css{
+    text-align: center;
+    color: #fff;
+    font-size: 23px;
+
+ 
+}
+
+.days{
+    font-size: 75px;
+  padding-left: 10px;
+  line-height: 75px;
+}
+
+.css{
+    padding-left: 10px;
+    line-height: 15px;
+}
