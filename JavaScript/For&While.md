@@ -26,7 +26,7 @@ for(초기값; 조건문; 증감문){
 ```javascript
 //구구단 2단 만들기
 for(let i = 1; i <= 9; i++){
-    console.log(2 * i);
+    console.log(2 * i );
 }
 //2 4 6 8 10 12 14 16 18출력 
 
@@ -52,7 +52,7 @@ while(조건문){
 ```js
 let i = 1;
 while(i <= 9){
-    console.log(2 * i);
+    document.write(2 * i + " ");
     i++;
 }
 
