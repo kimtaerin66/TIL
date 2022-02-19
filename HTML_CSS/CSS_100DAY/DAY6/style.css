@@ -1,0 +1,167 @@
+
+.frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  height: 400px;
+  margin-top: -200px;
+  margin-left: -200px;
+  border-radius: 3px;
+    box-shadow: 4px 8px 16px 0 rgba(0,0,0,0.1);
+    overflow: hidden;
+  background: linear-gradient(70deg, #ecbb6b, #cb7e4f);
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #786450;
+}
+
+.center {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.box{
+  position: absolute;
+  top: -150px;
+  left: 40px;
+  width: 320px;
+  height: 300px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.2);
+  overflow: hidden;
+}
+.profile {
+float: left;
+}
+
+.numbers{
+  width: 120px;
+  height: 100%;
+  background-color: #f5e8df;
+  float: right;
+}
+
+.profile img{
+  position: relative;
+  width: 70px;
+  height: 70px;
+  border-radius: 35px;
+  margin: 35px 0px 0px 65px;
+  z-index: 10;
+
+}
+/* profile 원 hover부분에서 엄청 오래걸렸는데 그이유는 img에 호버를 걸어서..
+그 부모에 호버를 걸었어야했다. */
+.profile:hover{
+  cursor: pointer;
+}
+
+.profile:hover .circle1, .profile:hover .circle2 {
+  transform: rotate(360deg);
+}
+.profile:hover .circle2 {
+  transform: rotate(-360deg);
+}
+
+.circle1 {
+  top: 30px;
+  left: 60px;
+  position: absolute;
+  width: 76px;
+  height: 76px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #786450 #786450 #786450 transparent ;
+  border-radius: 50%;
+  transition: all 1.5s ease-in-out;
+
+}
+
+
+
+.circle2 {
+  top: 26px;
+  left: 56px;
+  position: absolute;
+  width: 84px;
+  height: 84px;
+  border-width: 1px;
+  border-style: solid;
+  border-color:  #786450 transparent #786450 #786450  ;
+  border-radius: 50%;
+  transition: all 1.5s ease-in-out;
+}
+.name{
+  width: 200px;
+  text-align: center;
+
+}
+
+.name span:first-child{
+  display: block;
+  font-size: 15px;
+	font-weight: 600;
+  margin-top: 15px;
+  
+}
+
+.name span:last-child{
+  font-size: 11px;
+  line-height: 5px;
+  font-weight: 100;
+}
+.btns{
+  margin-top: 35px;
+}
+.btn {
+  display: block;
+  background-color: #fff;
+  border: 1px solid #786450;
+  border-radius: 15px;
+  width: 120px;
+  height: 30px;
+  color: #786450;
+  font-weight: 500;
+  width: 120px;
+  margin: 0 auto 10px auto;
+}
+
+.btn:hover{
+  background-color:#786450;
+  color: #fff;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.numbers div{ 
+  height: 69px;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  border-color: transparent transparent #fff transparent;
+  padding-top: 30px;
+}
+.numbers div:hover{
+  background: #E1CFC2;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.numbers span {
+  display: block;
+}
+
+.numbers span:first-child{
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.numbers span:last-child{
+  font-weight: 100;
+  font-size: 11px;
+}

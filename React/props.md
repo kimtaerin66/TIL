@@ -10,7 +10,7 @@ state - 현재 사는 곳, 취업여부, 결혼/연애여부
 props - 사람의 이름, 성별, 나이
 
 ## 어떤 상황에 사용하는가?
-data, 속성 등을 보낼 때 사용한다.
+data, 속성, 함수 등을 보낼 때 사용한다.
 
 예) 동일한 스타일의 버튼이 이름만 달리 하고싶을때, 
 
@@ -68,13 +68,15 @@ React에는 memorize(기억하기)기능이 있다.
 
 이 기능은 props를 받아올 때 컴포넌트가 전체 re-rendering되는데,
 
-전체를 다시받게되면 어플이 느려질 수 있기때문에, **state 변경이없는 것은 re-rendering하지않게 하는 기능이다.**
+전체를 다시받게되면 어플이 느려질 수 있기때문에, **state 변경이 없는 것은 re-rendering하지않게 하는 기능이다.**
 
 예시) Save Changes버튼 클릭시 Revert Change로 버튼명 변경됨/ Continue버튼은 계속 그대로
 
-사용법 - MemorizedBtn = React.memo(Btn);만들어, Btn을 메모시키고,
+사용법 
 
-Btn대신 MemorizedBtn 사용;
+const MemorizedBtn = React.memo(Btn); 변수만들고 괄호안에 메모할 컴포넌트(Btn) 적기,
+
+랜더되는 App.js에 Btn컴포넌트대신 MemorizedBtn 사용.
 
 이렇게하면 변경되지 않는 Continue는 한번만 받아온다.
 
@@ -113,30 +115,5 @@ Btn대신 MemorizedBtn 사용;
 
  **onClick={changeValue}를 html button에다 작성하면 이벤트리스너, 컴포넌트에 작성하면 props보내기**
 
-## propTypes
- props를 전달할 때 우리는 실수를 할 수 있다
 
- 예를 들어 버튼에 text는 string을 fontSize에는 number을 줘야하는데
- 잘못줬을 경우.
- ```js
- //올바른 예
- <Btn text="Save Change" fontSize={18} />
-
- //잘못줬을 때
- <Btn text={18} fontSize="Save Change" />
- ```
-
-이렇게 실수했을 때 실수했다고 말해주는게 바로 propTypes
-
-propTypes를 설치하고 사용할 컴포넌트에 prop가 어떠한 타입이 들어가는지 적어준다.
-
-fontSize처럼 마지막에 isRequired를 적어주면 꼭 입력해야하는 값으로 표시할 수 있다.
-```js
-  Btn.propTypes = {
-       text: PropTypes.string,
-       fontSize : PropTypes.number.isRequired, 
-   };
-```
-이렇게 propTypes을 지정하면 실수했을 때 console창에 에러로 알려준다.
-
-![Alt text](../IMG/propError.JPG)
+ 
