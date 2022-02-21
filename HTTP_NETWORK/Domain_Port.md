@@ -12,7 +12,7 @@ Addresses:  223.130.195.200
           223.130.195.95
 Aliases:  www.naver.com
 ```
-## IP
+# IP
 위에 도메인에서 말했듯이 , 원하는 사이트에 접속하려면
 
 주소가 있어야하는데 사람들이 쉽게 읽을 수 있는게 도메인,
@@ -31,7 +31,7 @@ Aliases:  www.naver.com
  <br/>
 
 
-## DNS(Domain Name System)
+# DNS(Domain Name System)
 
 도메인 이름 > IP주소로 변환, 반대로
 
