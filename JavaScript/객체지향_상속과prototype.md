@@ -152,4 +152,20 @@ console.log(o.ultraProp); //1출력
 3. 없다면 Super.prototype.ultraProp를 찾는다.
 4. 없다면 Ultra.prototype.ultraProp를 찾는다.
 
+!! 중요한건 
+
+Super를 상속받고 싶을때 
+```js
+//올바른 방법
+Sub.prototype = new Super();
+
+//틀린방법
+Sub.prototype = Super.prototype;
+```
+
+두번째 방법을 사용하게되면, 자식객체에게 새로운 값을 추가하거나, 삭제하면
+
+부모객체까지 영향을 미친다.
+
+
 참고사이트 [생활코딩](https://opentutorials.org/course/743/6573)
