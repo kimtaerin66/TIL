@@ -36,24 +36,52 @@ $ npm -v
 8.1.2
 ```
 
-## 2. 버전관리
+## 2. NVM
 
 node.js의 새로운 버전이 나오면 업그레이드해야하거나, 
 기존의 작업물에 맞춰 다운그레이드 해야하는 경우가 있다.
 
 이렇게 자주 버젼 변경이 필요하므로 버전관리 매니저인
-NVM 또는 n을 설치한다. (윈도우는 nvm-windows나 nodist를 사용한다.)
+NVM 을 사용한다(윈도우는 nvm-windows나 nodist를 사용한다.)
 
-- NVM 설치 (충돌을 피하기위해 기존 node.js를 제거 후 설치)
+## NVM 설치 (충돌을 피하기위해 기존 node.js를 제거 후 설치)
 ``` node
 $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
 ```
 
-- n 설치 (기존 node.js 제거 필요 없음)
+
+## 사용법
+
+- 현재 설치된 목록보기
+
+ls는 list의 줄임말로 둘다 사용가능하다.
 
 ```node
-$ npm install -g n
-
-# 관리자 권한을 요구할 경우
-$ sudo npm install -g n
+nvm ls 
+nvm list
 ```
+
+- 특정 버전 설치
+
+목록보기에서 변경하고 싶은 버전이 없는 경우 설치를 한다.
+```node
+//최신버전
+nvm install --lts 
+
+//원하는 특정버전
+nvm install 12.18.3
+```
+
+- 특정 버전으로 전환
+
+원하는 버전을 설치했다면 전환시킨다.
+```node
+nvm use 12.18.3
+```
+
+- 특정 버전 삭제
+
+```node
+nvm uninstall 12.18.3
+```
+참고로 현재사용중인 버전은 삭제불가능, 다른버전으로 전환 후 삭제한다.
