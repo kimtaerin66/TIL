@@ -10,6 +10,9 @@ git add a.txt
 
 git status
 
+# 레포지토리 삭제
+github 로그인 > 삭제하려는 레포지토리 들어가기 > 우측상단 setting >  Delete this repository
+
 # 커밋하기 '내용'
 git commit -m '1'
  
