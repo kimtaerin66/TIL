@@ -151,6 +151,30 @@ const kim = new PersonPlus('kim', 10, 20. 30);//30추가
 console.log(kim.sum()); //60
 console.log(kim.avg()); //20
 ```
+## 다른예제 추가.
 
+```js
+//Person을 상속받는 Rin객체만들기.
+class Person{
+    constructor(name){
+          this.name = name;
+    }
+eat(){
+    return `${this.name} eats something `;
+}
+}
+
+//상속 + 메소드만 추가
+class Rin extends Person{
+    sleep(name, time){
+        this.time = time; //필수로 넣어주기. 새로받는값정의 
+        return `${this.name} sleeps at ${time}`
+    }   
+}
+
+const rin = new Rin('rin'); //객체생성 부모 Person이 받는 name넣어주기.
+
+console.log(rin.sleep('rin', 12)); //rin sleeps at 12
+```
 
 
