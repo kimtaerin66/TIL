@@ -15,12 +15,15 @@ const upload = multer({ dest: 'uploads/' })
 
 dest는 destination의 약자로 파일이 어느 폴더에 저장될건지 설정해준다.
 ![Alt text](../IMG/upload1.JPG)
+
 [랜덤으로 설정된 파일이름]
 
 dest로 설정되있을때 사용자가 파일을 보내면 파일이름이 랜덤으로 저장된다 
 
 만약 사용자가 업로드한 그대로의 이름을 사용하고 싶다면,
+
 ![Alt text](../IMG/upload2.JPG)
+
 [storage를 사용하여 사용자가 보낸 그대로의 파일이름]
 dest대신 storage사용
 
