@@ -1,4 +1,12 @@
 # Randomness
 
-- 사용자가 버튼을 클릭하면 colors배열에서 두 가지 색상이 랜덤으로 선택되어야 합니다.
-- 랜덤으로 선택된 두 가지 색상을 사용해 linear-gradient로 변경하세요.
+- 유저가 버튼을 클릭하면 배경 그라데이션이 바뀐다.
+
+[처음화면모습]
+![Alt text](../../../IMG/Randomness1.JPG)
+
+[버튼 1회 클릭시]
+![Alt text](../../../IMG/Randomness2.JPG)
+
+[버튼 2회 클릭시]
+![Alt text](../../../IMG/Randomness3.JPG)
