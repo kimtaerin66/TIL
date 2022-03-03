@@ -1,5 +1,5 @@
 # props
-props 컴포넌트 외부에서 받은 값
+props는 properties의 줄임말고, 컴포넌트 외부에서 받은 값이다.
 
 state에서 예를 들었던 예시로 다시 말하자면,
 
@@ -62,6 +62,36 @@ function Btn({text}){ //text로 받기
     const root = document.querySelector("#root");
     ReactDOM.render(<App />, root);
 ```
+## props 기본값 설정하기
+
+위의 App컴포넌트에서 Btn컴포넌트에 text로 버튼의 이름을 받고있는데,
+
+만약 이름을 적어주지않는다면, 보이게될 기본값을 설정할 수 있다.
+```js
+//Btn 컴포넌트
+
+function Btn({text}){ //text로 받기
+       return(
+           <button  style={{
+               color : "white",
+               backgroundColor : "tomato",
+               padding : "10px 20px",
+               border : 0,
+               borderRadius : 10,
+           }}>
+           {text}
+           </button>
+       )
+   }
+
+Btn.defaultProps = {
+    text :'이름없음'
+};
+```
+이렇게 설정하면, 버튼에 이름을 주지않은 것들은 이름없음 이라는
+
+텍스트가 담긴 버튼으로 생성된다.
+
 
 ## Memo
 React에는 memorize(기억하기)기능이 있다.
