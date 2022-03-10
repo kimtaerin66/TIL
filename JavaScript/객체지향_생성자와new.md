@@ -133,19 +133,3 @@ const avante = new car("hyundai", "avante", "white"); //(brand, name, color)순�
 const mini = new car("bmw", "mini", "navy"); //(brand, name, color)순으로 
 
 ```
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-

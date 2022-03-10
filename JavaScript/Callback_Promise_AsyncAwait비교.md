@@ -116,3 +116,34 @@ async()를 사용해 await를 붙여 일반함수처럼 실행한다.
  
 
 결과는 역시나 동일하게 A 2초후 B 2초후 C가 출력된다. 
+
+
+----
+
+Async Await가 나는 너 무어려워서 예제추가
+
+예제1)
+일반 함수와 비교
+```js
+function Hello(){
+  return 'Hello';
+  }
+
+Hello(); //Hello
+```
+이렇게 평범한 Hello함수앞에 async를 붙이면, promise가 리턴된다.
+```js
+async function Hello(){
+  return 'Hello';
+  }
+
+Hello(); // Promise {<fulfilled>: 'Hello'}
+```
+
+이 async함수를 이렇게 작성해도 동일하다.
+
+```js
+const hello = async() => { 
+  return "Hello" 
+  };
+```

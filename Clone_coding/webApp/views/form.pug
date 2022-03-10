@@ -6,10 +6,10 @@ html(lang="ko")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title Document
     body 
-      form(action="/form_receiver") 
+      form(action="/form_receiver" method="post") 
           p
-            input(type="text" name="title") 
+            input(type="text" name="title" ) 
           p 
             textarea(name="description")
           p 
-            button(type="submit")  제출
+            button(type="submit")  

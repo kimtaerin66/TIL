@@ -82,3 +82,57 @@ export default App;
 **주의할점**
 
 값만 넣으면 안되고, 꼭 배열을 넣어야 리액트가 인식한다.
+
+
+## Memo
+React에는 memorize(기억하기)기능이 있다.
+
+이 기능은 props를 받아올 때 컴포넌트가 전체 re-rendering되는데,
+
+전체를 다시받게되면 어플이 느려질 수 있기때문에, **state 변경이 없는 것은 re-rendering하지않게 하는 기능이다.**
+
+예시) Save Changes버튼 클릭시 Revert Change로 버튼명 변경됨/ Continue버튼은 계속 그대로
+
+사용법 
+
+const MemorizedBtn = React.memo(Btn); 변수만들고 괄호안에 메모할 컴포넌트(Btn) 적기,
+
+랜더되는 App.js에 Btn컴포넌트대신 MemorizedBtn 사용.
+
+이렇게하면 변경되지 않는 Continue는 한번만 받아온다.
+
+```js
+  function Btn({text, changeValue}){ 
+       return(
+           <button 
+           onClick={changeValue}
+           style={{
+               color : "white",
+               backgroundColor : "tomato",
+               padding : "10px 20px",
+               border : 0,
+               borderRadius : 10,
+
+           }}>
+           {text}
+           </button>
+       )
+   }
+
+    const MemorizedBtn = React.memo(Btn);
+    function App (){
+        const [value, setValue] = React.useState("Save Changes");
+        const changeValue = () => setValue("Revert Change");
+        return (
+        <div>
+         <MemorizedBtn text={value} changeValue={changeValue}/> 
+         <MemorizedBtn text="Continue" />
+         </div>
+         )}
+    const root = document.querySelector("#root");
+    ReactDOM.render(<App />, root);
+
+```
+
+ **onClick={changeValue}를 html button에다 작성하면 이벤트리스너, 컴포넌트에 작성하면 props보내기**
+

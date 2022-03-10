@@ -1,15 +1,23 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser')
 app.set("views", __dirname + "/views" );; //pug위치 알려주는 코드
 app.set("view engine", "pug"); // 퍼그를 사용하겠다 알려주는 코드
 app.use(express.static('public')); //추가한 코드
-
+app.use(bodyParser.urlencoded({ extended: false }))
 app.get('/form', function(req, res){
     res.render('form');
 })
 app.get('/form_receiver', function(req, res){
     const title = req.query.title;
     const description = req.query.description;
+    res.send(title+','+ description);
+
+})
+
+app.post('/form_receiver', function(req, res){
+    const title = req.body.title;
+    const description = req.body.description;
     res.send(title+','+ description);
 
 })

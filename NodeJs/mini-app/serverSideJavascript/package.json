@@ -4,7 +4,7 @@
   "description": "데이터베이스를 사용하지 않는 기초 웹어플리케이션.",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon ./app.js",
+    "start": "nodemon ./app_mysql",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

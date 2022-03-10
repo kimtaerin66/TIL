@@ -112,7 +112,7 @@ border-radius:50px ;
 추가되는 부분만 작성
 ```js
 const Box = styled.div`
-background-color :${props =>props.bgColor};
+background-color :${(props) =>props.bgColor};
 width: 100px;
 height : 100px;
 `;

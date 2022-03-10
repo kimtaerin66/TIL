@@ -1,20 +1,24 @@
-import React, { useState, useEffect } from "react";
-import Movie from "./Movie";
+import React,{ useState, useEffect } from 'react';
+import Home from '../routes/Home';
+import Detail from '../routes/Detail';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+//npm i react-router-dom@5.3.0
 
 function App() {
-  const [ loading, setLoading ] = useState(true);
-  useEffect(()=> {
-    fetch(
-      'https://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=8e018e2fab4b6ca6c09cfd4eff2f96da&targetDt=20220101'
-      )
-      .then((res)=> res.json())
-      .then(json => console.log(json));
-  }, [])
-  return (
-    <div >
-     {loading ? <h1>loading...</h1> : <Movie />}
-    </div>
-  );
+ 
+return (
+  <Router>
+    <Switch>
+    <Route path ='/movie/:id'>
+       <Detail />
+      </Route>
+      <Route path ='/'>
+       <Home />
+      </Route>
+    </Switch>
+  </Router>
+);
+   
 }
 
 export default App;
