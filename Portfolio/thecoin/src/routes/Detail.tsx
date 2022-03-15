@@ -15,8 +15,18 @@ const DetailContainer = styled.div`
   margin-right: 15px;
 `;
 
-const CoinName = styled.h1``;
-const Price = styled.p``;
+const Img = styled.img`
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
+`;
+
+const CoinName = styled.div`
+height: 35px;
+display: flex;
+align-items: center;
+`;
+const Price = styled.div``;
 
 function Detail() {
   const { coinMarket } = useParams();
@@ -33,11 +43,19 @@ function Detail() {
   }, []);
   return (
     <DetailContainer>
-      {price.map((p) => <Price key={p.market}>
-      <p>{p.market}</p>
-      <p>{p.trade_price}</p>
-      </Price>
-      )}
+      {price.map((p) => (
+        <Price key={p.market}>
+          <CoinName>
+            <Img
+              src={`https://cryptoicon-api.vercel.app/api/icon/${p.market
+                .substr(4)
+                .toLowerCase()}`}
+            />
+            {p.market}
+            <span>{p.trade_price}</span>
+          </CoinName>
+        </Price>
+      ))}
     </DetailContainer>
   );
 }
