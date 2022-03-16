@@ -9,7 +9,9 @@ function Router() {
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="/:coinMarket/detail" element={<Detail />} />
+      <Route path="/:market" element={<Detail />} />
+      </Routes>
+      <Routes>
       <Route path="/" element={<Home />} />
       </Routes>
     </BrowserRouter>
