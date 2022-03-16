@@ -87,6 +87,38 @@ function App() {
 
 다른 태그로 바꾸더라도 여전히 적용된다.
 
-## 3. theme 
+## 3. createGlobalStyle 
 
-다크모드, 라이트모드 설정하기
+reset css처럼 css를 전체적용하고 싶을 때 사용된다.
+
+사용법
+
+전체 적용이기에 App.js작성
+
+ import를 해주고, styled. 대신 createGlobalStyle로 컴포넌트를 만들고,
+ 스타일을 지정해준다.
+```js
+//App.js
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  color : #fff;
+`;
+```
+
+사용할 땐 적용하고 싶은 컴포넌트들보다 위에, 가장 상단에 불러온다.
+
+하위컴포넌트들에 모두 적용된다.
+
+```js
+//App.js
+function App() {
+  return (
+    <>
+      <GlobalStyle />
+      <Router />
+    </>
+  );
+}
+
+```
