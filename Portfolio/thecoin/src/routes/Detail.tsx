@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import { json } from "stream/consumers";
+import Coin from "./../../../../routes/Coin";
 
 interface IState {
-  state: { name: string};
+  state: { name: string };
 }
 
 interface IPrice {
@@ -11,9 +13,7 @@ interface IPrice {
   market: string;
   trade_price: number;
 }
-const DetailTitle = styled.div`
-
-`;
+const DetailTitle = styled.div``;
 const DetailContainer = styled.div`
   width: 520px;
   height: 400px;
@@ -28,27 +28,40 @@ const Img = styled.img`
 `;
 
 const CoinName = styled.div`
-height: 35px;
-display: flex;
-align-items: center;
+  height: 35px;
+  display: flex;
+  align-items: center;
 `;
-const Price = styled.div``;
+const Price = styled.div`
+`;
 
 function Detail() {
-  const { market } = useParams();
+  const { market } = useParams<{ market: string }>();
   const [price, setPrice] = useState<IPrice[]>([]);
-  const { state } = useLocation() as IState;
-  // const { state } = useLocation() as IState; //한글이름 받아옴
+  useEffect(() => {
+    (async () => {
+      const priceDate = await (
+        await fetch(`https://api.upbit.com/v1/ticker?markets=${market}`)
+      ).json();
+      setPrice(priceDate);
+    })();
+  }, []);
+  const { state } = useLocation() as IState; //한글이름 받아옴
   return (
     <DetailContainer>
-      <DetailTitle> 
-        
-        <Img src={`https://cryptoicon-api.vercel.app/api/icon/${p.market
+      <DetailTitle>
+        {price.map((p, idx) => (
+          <CoinName key={idx}>
+            <Img
+              src={`https://cryptoicon-api.vercel.app/api/icon/${p.market
                 .substr(4)
-                .toLowerCase()}`} />
-        {state.name || "Lodaing..."}
-        </DetailTitle>
+                .toLowerCase()}`}
+            />   {state.name || "Lodaing..."}
+            <Price>{p. trade_price} </Price>
+          </CoinName>
+        ))}
       
+      </DetailTitle>
     </DetailContainer>
   );
 }
