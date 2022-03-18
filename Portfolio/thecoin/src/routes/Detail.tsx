@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import { json } from "stream/consumers";
-import Coin from "./../../../../routes/Coin";
+
 
 interface IState {
   state: { name: string };
 }
 
 interface IPrice {
-  //받아오는 코인이 어떻게생겼는지 타입스크립트에게 말해주기
   market: string;
   trade_price: number;
 }
 const DetailTitle = styled.div``;
-const DetailContainer = styled.div`
+const DetailContainer = styled.div` 
   width: 520px;
   height: 400px;
   background-color: white;
@@ -32,8 +30,7 @@ const CoinName = styled.div`
   display: flex;
   align-items: center;
 `;
-const Price = styled.div`
-`;
+const Price = styled.div``;
 
 function Detail() {
   const { market } = useParams<{ market: string }>();
@@ -54,13 +51,13 @@ function Detail() {
           <CoinName key={idx}>
             <Img
               src={`https://cryptoicon-api.vercel.app/api/icon/${p.market
-                .substr(4)
+                .substring(4)
                 .toLowerCase()}`}
-            />   {state.name || "Lodaing..."}
-            <Price>{p. trade_price} </Price>
+            />
+            {state.name || "Lodaing..."}
+            <Price>{p.trade_price}</Price>
           </CoinName>
         ))}
-      
       </DetailTitle>
     </DetailContainer>
   );

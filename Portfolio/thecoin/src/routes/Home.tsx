@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Link, Route, Routes, useParams } from "react-router-dom";
-import Detail from "./Detail";
+import { Outlet, Link, useMatch } from "react-router-dom";
 
 interface DetailProps {
   market: string;
@@ -58,6 +57,7 @@ const CoinHeader = styled.div`
   background-color: rgba(0, 0, 0, 0.2);
 `;
 const CoinBox = styled.li`
+  //props받기
   list-style: none;
   font-size: 8px;
   font-weight: bold;
@@ -78,18 +78,11 @@ const CoinBox = styled.li`
   }
 `;
 
-const DetailBox = styled.div`
-  width: 520px;
-  height: 400px;
-  background-color: white;
-  margin-right: 15px;
-  box-shadow: -2px -2px 10px rgba(0, 0, 0, 0.02);
-`;
-
 function Home() {
   const [isLoading, setLoading] = useState(true);
   const [coins, setCoins] = useState<ICoin[]>([]);
   const [price, setPrice] = useState<IPrice[]>([]);
+  const priceMatch = useMatch("/:market");
   useEffect(() => {
     (async () => {
       const res = await fetch(`https://api.upbit.com/v1/market/all`);
@@ -106,10 +99,7 @@ function Home() {
         <Wrap>
           <Header>Hello</Header>
           <Container>
-            <DetailBox>
-              <p></p>
-              <p>1111</p>
-            </DetailBox>
+            <Outlet />
             <CoinList>
               <CoinHeader>
                 <span>한글명</span>
@@ -117,7 +107,10 @@ function Home() {
               </CoinHeader>
               {coins.map((coin, idx) => (
                 <CoinBox key={idx}>
-                  <Link to={`/${coin.market}`} state={{ name: coin.korean_name }}>
+                  <Link
+                    to={`/${coin.market}`}
+                    state={{ name: coin.korean_name }}
+                  >
                     {coin.korean_name}
                     <p> {coin.market}</p>
                   </Link>
