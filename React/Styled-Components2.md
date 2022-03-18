@@ -122,3 +122,49 @@ function App() {
 }
 
 ```
+
+## 4. ThemeProvider 
+ThemeProvider란 자주 사용하는 컬러나, 스타일을 파일로 작성하고,
+
+props로 받아서 사용하게 해준다.
+
+
+### 1. import 및 가장 상단에 작성
+
+index.js에 ThemeProvider를 import해주고,
+
+ThemeProvider로 App컴포넌트를 감싸준다 => App컴포넌트 전체에 적용
+
+```js
+//index.js 
+import { ThemeProvider } from "styled-components";
+
+ReactDOM.render(
+  <React.StrictMode>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+```
+### 2. ThemeProvider가 받는 props작성(theme.js)
+```js
+// theme.js
+
+export const theme = {
+    bgColor : "#2f3640",
+    textColor : "#f5f6fa",
+    accentColor : "#9c88ff",
+};
+```
+### 3. props 받기/사용
+
+```js
+//Coin.js
+
+const Title = styled.h1`
+  font-size: 48px;
+  color: ${(props) => props.theme.accentColor};
+`;
+```
