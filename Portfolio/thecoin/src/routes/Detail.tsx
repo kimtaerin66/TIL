@@ -1,7 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams, useLocation } from "react-router-dom";
 import styled from "styled-components";
+import ApexChart from "react-apexcharts";
+import { useQuery } from "react-query";
+import { fetchPrice } from "../api";
+import { fetchCandles } from "./../api";
 
+interface IDark {
+  darkMode : boolean;
+}
 
 interface IState {
   state: { name: string };
@@ -10,56 +17,150 @@ interface IState {
 interface IPrice {
   market: string;
   trade_price: number;
+  prev_closing_price: number;
+  signed_change_price: number;
+  signed_change_rate: number;
 }
-const DetailTitle = styled.div``;
-const DetailContainer = styled.div` 
-  width: 520px;
-  height: 400px;
-  background-color: white;
-  margin-right: 15px;
-`;
 
-const Img = styled.img`
-  width: 25px;
-  height: 25px;
-  margin-right: 5px;
-`;
+type RouterParams = {
+  market: string;
+};
 
-const CoinName = styled.div`
-  height: 35px;
-  display: flex;
+interface ICandle {
+  market: string;
+  candle_date_time_utc: string;
+  candle_date_time_kst: string;
+  opening_price: number;
+  high_price: number;
+  low_price: number;
+  trade_price: number;
+  timestamp: number;
+  candle_acc_trade_price: number;
+  candle_acc_trade_volume: number;
+  first_day_of_period: string;
+}
+
+const Container = styled.div`
+  width: 480px;
+  margin: 0 auto;
+  background-color: #fff;
+  height: 500px;
+  margin-top: 10px;
+  border-radius: 10px;
+`;
+const DetailCoin = styled.div`
   align-items: center;
 `;
-const Price = styled.div``;
+const CoinName = styled.div`
+  font-family: "GmarketSansBold";
+  text-align: center;
+  font-size: 25px;
+  padding: 20px 0;
+  color: #353535;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+`;
 
-function Detail() {
-  const { market } = useParams<{ market: string }>();
-  const [price, setPrice] = useState<IPrice[]>([]);
-  useEffect(() => {
-    (async () => {
-      const priceDate = await (
-        await fetch(`https://api.upbit.com/v1/ticker?markets=${market}`)
-      ).json();
-      setPrice(priceDate);
-    })();
-  }, []);
+const CoinPrice = styled.div<{ isPlus: boolean }>`
+  margin: 15px;
+  color: ${(props) =>
+    props.isPlus ? props.theme.accentColor : props.theme.lowColor};
+  font-size: 23px;
+  font-family: "GmarketSansBold";
+  span {
+    font-size: 12px;
+    font-family: "Noto Sans", sans-serif;
+  }
+  p:last-child {
+    font-size: 10px;
+  }
+`;
+
+function Detail({darkMode}:IDark) {
+  const { market } = useParams() as RouterParams;
   const { state } = useLocation() as IState; //한글이름 받아옴
+  const { isLoading: priceLoading, data: priceDate } = useQuery<IPrice[]>(
+    market,
+    () => fetchPrice(market)
+  );
+  const { isLoading: candleLoading, data: candleData } = useQuery<ICandle[]>(
+    ["week", market],
+    () => fetchCandles(market)
+  );
   return (
-    <DetailContainer>
-      <DetailTitle>
-        {price.map((p, idx) => (
-          <CoinName key={idx}>
-            <Img
-              src={`https://cryptoicon-api.vercel.app/api/icon/${p.market
-                .substring(4)
-                .toLowerCase()}`}
-            />
-            {state.name || "Lodaing..."}
-            <Price>{p.trade_price}</Price>
-          </CoinName>
-        ))}
-      </DetailTitle>
-    </DetailContainer>
+    <Container>
+      {priceDate?.map((price, idx) => (
+        <>
+          <DetailCoin key={idx}>
+            <CoinName>{state.name || "Lodaing..."}</CoinName>
+            <CoinPrice isPlus={price.signed_change_rate > 0}>
+              <p>
+                {price.trade_price.toLocaleString("ko-kr")}
+                <span>KRW</span>
+              </p>
+              <p> {price.signed_change_price}</p>
+            </CoinPrice>
+            {candleLoading ? (
+              "Lodaing..."
+            ) : (
+              <ApexChart
+                type="line"
+                series={[
+                  {
+                    name: "Price",
+                    data: candleData?.map((price) => price.trade_price) ?? [], //없으면 빈배열추가.
+                  },
+                ]}
+                options={{
+                  theme: {
+                    mode: darkMode ? "dark" : "light",
+                  },
+                  chart: {
+                    width: 500,
+                    height: 300,
+                    toolbar: {
+                      show: false,
+                    },
+                    background: "transparent",
+                  },
+                  grid: {
+                    show: false,
+                  },
+                  stroke: {
+                    curve: "smooth",
+                    width: 3,
+                  },
+                  yaxis: {
+                    show: false,
+                  },
+                  xaxis: {
+                    axisBorder: { show: false },
+                    axisTicks: { show: false },
+                    labels: { show: false },
+                    type: "datetime",
+                    categories:
+                      candleData?.map((data) => data.candle_date_time_kst) ??
+                      [],
+                  },
+                  fill: {
+                    type: "gradient",
+                    gradient: {
+                      gradientToColors: ["#4cd137"],
+                      stops: [0, 100],
+                    },
+                  },
+                  colors: ["#00a8ff"],
+                  tooltip: {
+                    y: {
+                      formatter: (value) => `$${value.toFixed(3)}`,
+                    },
+                  },
+                }}
+              />
+            )}
+          </DetailCoin>
+        </>
+      ))}
+    </Container>
   );
 }
 

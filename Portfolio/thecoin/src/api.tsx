@@ -10,3 +10,10 @@ export function fetchAll() {
 export function fetchPrice(market: string) {
   return fetch(`${URL}/ticker?markets=${market}`).then((res) => res.json());
 }
+
+export function fetchCandles(market: string) {
+  const endDate = Date.now();
+  return fetch(`${URL}/candles/weeks?market=${market}&count=14`).then((res) =>
+    res.json()
+  );
+}

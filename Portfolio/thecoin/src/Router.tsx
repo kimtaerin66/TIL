@@ -3,22 +3,23 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./routes/Home";
 import Detail from "./routes/Detail";
 
-function Router() {
+
+interface IToggle {
+  toggle: () => void;
+  darkMode : boolean;
+}
+
+function Router({ toggle, darkMode }: IToggle) {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home />} >
-        <Route path="/:market" element={<Detail />} /> 
-        </Route>
+        <Route path="/" element={<Home toggle={toggle}/>} />
+      </Routes>
+      <Routes>
+        <Route path="/:market" element={<Detail darkMode={darkMode} />} />
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default Router;
-
-{
-  /* <Routes>
-<Route path="/:market" element={<Detail />} />
-</Routes> */
-}

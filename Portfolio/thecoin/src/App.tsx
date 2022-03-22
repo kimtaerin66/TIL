@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Router from "./Router";
 import { createGlobalStyle } from "styled-components";
-import styled from "styled-components";
+import { ReactQueryDevtools } from "react-query/devtools";
+import { darkTheme, lightTheme } from "./theme";
+import { ThemeProvider } from "styled-components";
+
+
 
 const GlobalStyle = createGlobalStyle`
 //reset.css
@@ -34,7 +38,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
   font-family: 'Noto Sans', sans-serif;
-  background-color: #eee;
+  background-color: ${(props) => props.theme.bgColor};
 }
 ol, ul, li {
 	list-style: none;
@@ -56,13 +60,27 @@ a{
   text-decoration:none;
   color: inherit;
 }
+@font-face {
+    font-family: "GmarketSansBold";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff")
+      format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
 `;
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+  const toggle = () => {
+    setDarkMode((pre) => !pre);
+  };
   return (
     <>
-      <GlobalStyle />
-      <Router />
+      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+        <GlobalStyle />
+        <Router darkMode={darkMode} toggle={toggle}/>
+        <ReactQueryDevtools initialIsOpen={false} />
+      </ThemeProvider>
     </>
   );
 }
