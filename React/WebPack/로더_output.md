@@ -117,3 +117,104 @@ css가 적용된다.
 이렇게 로더라는 것은 우리가 지정한 파일을 발견하면,
 
 파일에 따라 지정한 가공을 통해 우리가 원하는 결과를 만들어준다.
+
+-----------------------------------------
+# OUTPUT 
+
+로더를 이용해서 작업까지 완료했다면 이 결과물을 어떻게 최종적으로 원하는대로 만들어낼것인가.
+
+하나로 합칠것이, 쪼갤건지, 이름은 무엇으로 할것인지 등.
+
+예) index.html과 about.html이 있고, 서로를 a태그로 연결.
+
+```html
+<!-- index.html -->
+<body>
+    <h1>Hello, Index</h1>
+    <div id="root"> </div>
+    <script src="./public/index_bundle.js"></script>
+    <a href="./about.html">about</a>
+</body>
+</html>
+
+<!-- about.html -->
+<body>
+    <h1>Hello, About</h1>
+    <div id="root"> </div>
+    <script src="./public/about_bundle.js"></script>
+    <a href="./index.html">index</a>
+</body>
+</html>
+
+```
+world hello를 출력하게하는 about.js도 생성한다.  
+```js
+//about.js
+import hello_word from "./hello.js"
+import world_word from "./world.js"
+import css from "./style.css"
+document.querySelector('#root').innerHTML = world_word+ ' '+ hello_word ;
+console.log('css',css);
+```
+
+
+ ## Q. about_bundle.js 파일을 public 폴더에 만들어야하는데 이때, 엔트리파일은 about.js고,
+
+## 이 파일이 사용하는 여러파일을 번들링하는 작업을 웹팩에게 시키려고한다. 어떻게 해야할까?
+
+
+1. webpack.config.js 파일을 열고, entry를 살펴보자.
+
+index.js와 about.js를 번들링하고 싶다. 
+
+> 여러개를 표현할땐, 이름을 지어(index,about) 객체로 표현
+
+```js
+//webpack.config.js
+//기존
+const path = require('path');
+module.exports ={
+    mode : "development",
+    entry: {
+       entry:"./index.js", 
+    }
+
+//수정
+const path = require('path');
+module.exports ={
+    mode : "development",
+    entry: {
+        index : "./index.js",
+        about : "./about.js"
+    },
+```
+2. output 수정
+
+기존대로 작성하면, 두개의 파일을 번들링하여 하나의 파일로
+합쳐버린다. 그렇기에 각각으로 나눠줘야하는데
+
+해당파일이름_bundle.js로 출력하기위해 약속된 문법
+
+[name]을 사용한다.
+
+```js
+//webpack.config.js
+//기존
+ output:{
+        path:path.resolve(__dirname, "public"),
+        filename:'index_bundle.js'
+    },
+
+//수정
+   output:{
+        path:path.resolve(__dirname, "public"),
+        filename:'[name]_bundle.js'
+    },
+```
+
+3. npx webpack으로 실행.
+
+public폴더에 about_bunble.js/ index_bundle.js파일이
+
+생성된 것을 확인할 수 있다.
+
