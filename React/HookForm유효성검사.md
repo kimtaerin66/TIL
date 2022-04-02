@@ -185,3 +185,78 @@ function JoinForm() {
 타입스크립트가 이미 어떤 값들이 들어올지 알고있기때문에 자동완성으로 알려준다.
 
 그 중 defaultValues값을 설정해주면된다.
+
+## 0.8 특정 에러값주기 setError
+setError를 이용해서, 
+
+비밀번호와 비밀번호확인이 같지않으면 에러를 준다거나, 특정단어를 사용하면 에러가 발생하는 등
+
+원하는대로 에러를 셋팅할 수 있다.
+
+```tsx
+function JoinForm() {
+  const { register, watch, handleSubmit, formState, setError } = useForm<IForm>({
+    defaultValues: {
+        Email: "@naver.com",
+    },
+  });
+const onVaild = (data:IForm) => {
+    if(data.password !== data.passwordConfirm){
+        setError("passwordConfirm",{ message : "비밀번호 확인이 다릅니다."})
+    }
+  };
+```
+
+먼저 setError를 적어주고, onVaild의 data타입도
+any가아닌 interface로 적어준다.(타
+입스크립트가 알게하기위해)
+
+그리고 데이터가 유효할때 실행되는 onVaild함수에
+
+[문법]
+setError("에러를 보낼 위치", {message : "보낼메세지})
+
+두개의 값이 다르면 passwordConfirm에 보낼메세지를
+작성한다.
+
+## 0.9 전체에러 (서버에러)만들기
+
+유효성검사의 문제가 아니라, 서버의 문제로 
+에러가 있을때는 전체적으로 에러표시를 해준다.
+
+먼저 interface에 서버에러를 추가해주고(extreError)
+물을표를 넣은이유는 서버에러가 발생하지 않을수도있으므로
+```tsx
+interface IForm {
+  Email: string;
+  firstname: string;
+  lastname: string;
+  username: string;
+  password: string;
+  passwordConfirm: string;
+  extreError? :string;
+}
+
+//생략
+
+const onVaild = (data:IForm) => {
+    if(data.password !== data.passwordConfirm){
+        setError("passwordConfirm",{ message : "비밀번호 확인이 다릅니다."})
+    }
+    setError("extreError", {message : "서버를 확인해주세요"} )
+  };
+
+//생략
+<span>{formState.errors?.passwordConfirm?.message}</span>
+        <button>Add</button>
+        <span>{formState.errors?.extreError?.message}</span>
+      </form>
+   </div>
+  );
+}
+export default JoinForm;
+```
+onVaild의 if문 밖에 에러메세지를 적어준다.
+또, 서버에 관한에러이기때문에 특정 form아래가 
+
+제일하단에 표시하였다.
