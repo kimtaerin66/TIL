@@ -95,3 +95,19 @@ function App() {
 ```
 
 useRecoilValue(사용할아톰)을 적어 값을 받아와서 사용하면 된다.
+
+### 05. 가져온 value(값)를 수정해야한다면? = useSetRecoilState
+
+useSetRecoilState 는 리액트 useState에서 setState와 동일한 역할을 한다.
+
+위에서 만든 isDarkAtom을 버튼에 연결해,
+클릭하면 다크모드 또 클릭하면 라이트모드가 되는 toggle버튼으로 만들어보자.
+
+```js
+const toggleFn = useSetRecoilState(isDarkAtom);
+<button onClick={()=> toggleFn((prev) => !prev)}>toggle</button>
+```
+버튼을 클릭했을 때 발생하니, onClick이벤트를 써주고, 
+
+현재값의 반대가 되는 값을 가져오도록 설정한다.
+
