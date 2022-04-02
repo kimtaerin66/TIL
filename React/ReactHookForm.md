@@ -156,6 +156,51 @@ function ToDoList(){
 export default ToDoList;
 ```
 
+## 0.5 handleSubmit
+handleSubmit함수를 사용하면 
+
+event.preventDefault 기능과, 유효성검사를 할 수 있다.
+
+handleSubmit는 두개의 인자를 받는데,
+
+ 첫번째인자는
+데이터가 유효할때 실행할 함수,
+
+ 두번째인자는 에러일때(데이터가 유효하지 않을때 실행할 함수)
+
+ 이 두번째 인자는 필수조건은 아니다.
+
+ ```tsx
+//ToDoList.tsx
+import React from "react";
+import { useForm } from "react-hook-form";
+
+function ToDoList(){
+    const { register, watch, handleSubmit } = useForm();
+    const onValid = (data:any) => {
+       console.log(data);
+     }
+    return (
+            <div>
+              <form onSubmit={handleSubmit(onValid)} >
+                <input {...register("todo")}  placeholder="Write your ToDos" />
+                <button>Add</button>
+              </form>
+            </div>
+          );
+}
+export default ToDoList;
+```
+
+먼저 register, watch 옆에 handleSubmit를 넣어주고,
+
+form에 onSubmit으로 사용한다. 이때 괄호안에 
+
+데이터가 유효할때 실행될함수(onValid)를 써준다.
+
+onValid는 데이터가 유효하면 콘솔창에 출력하므로,
+
+인풋창에 입력한 내용이 출력되는것을 확인할 수 있다.
 
 
 
