@@ -111,3 +111,104 @@ const toggleFn = useSetRecoilState(isDarkAtom);
 
 현재값의 반대가 되는 값을 가져오도록 설정한다.
 
+### 05. Selectors
+
+recoil Selectors는 파생된 상태(derived state)의 일부를 나타낸다.. (공식문서 설명)
+
+너무 어려우니 다른예로 찾아보자.
+
+Selectors를 사용하면 어떤 state를 내가 원하는 형태의 다른 state로 변형할 수 있다.
+
+예)
+```tsx
+//atoms.tsx
+import React from 'react';
+import { atom, selector } from 'recoil';
+
+export interface IToDo {
+    text : string;
+    id: number;
+    category: "TO_DO" | "DOING" | "DONE"; 
+  }
+
+export const toDoState = atom<IToDo[]>({
+    key:"toDo", //key
+    default: [], //기본값
+ })
+
+```
+IToDo인터페이스에는 세가지 카테고리가 존재한다.
+
+그 세가지를 각각의 아톰을 만들기보다는,
+이미 만들어진 하나의 아톰에 selector을 이용해
+다르게 변형시킬 수 있다. 
+
+ [Selector 만들기]
+
+키와, get함수가 필요하다.
+
+위의 동일한 아톰파일에 selector내용만
+추가한 상태.
+```tsx
+//atoms.tsx
+import React from 'react';
+import { atom, selector } from 'recoil';
+
+
+export interface IToDo {
+    text : string;
+    id: number;
+    category: "TO_DO" | "DOING" | "DONE"; 
+  }
+
+export const toDoState = atom<IToDo[]>({
+    key:"toDo", //key
+    default: [], //기본값
+ })
+
+export const toDoSelector = selector({
+  key : "toDoSelector", 
+  get : ({get}) => {
+    return "hello";
+  }
+});
+```
+
+이렇게 만들어준다음, 사용할 파일에 가서
+기본 state를 받을때사용되는 useRecoilValue를 이용해 받아온다.
+
+```tsx
+//todolist.tsx
+import { toDoSelector } from "./atoms";
+
+  const selectorOutput = useRecoilValue(toDoSelector)
+  console.log(selectorOutput);
+
+  //hello 출력
+```
+
+처음에 말한, 카테고리별로 아톰을 만들지않고,
+
+결과값을 다르게 받아오는 것을 해보자.
+
+```tsx
+//atoms.tsx
+export const toDoSelector = selector({
+  key : "toDoSelector", 
+  get : ({get}) => {
+    const toDos = get(toDoState);
+    return [toDos.filter((toDo) => toDo.category === "TO_DO")];
+  }
+});
+ 
+```
+
+get함수를 이용해 toDoState를 받아오고,
+필터함수로 해당 카테고리인것만 담은 새배열을
+리턴한다.
+
+동일하게, 필터를이용해 다른 카테고리도 작성하면 끝!
+
+
+
+
