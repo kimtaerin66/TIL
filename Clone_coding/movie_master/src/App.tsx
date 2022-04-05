@@ -1,11 +1,13 @@
 import React from "react";
 import { createGlobalStyle } from "styled-components";
-import Router from "./Router";
-import { ReactQueryDevtools } from 'react-query/devtools';
+import ToDoList from "./components/ToDoList";
+
+
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap');
-html, body, div, span, applet, object, iframe,
+himport { useRecoilValue } from 'recoil';
+tml, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
@@ -57,8 +59,7 @@ table {
 }
 body {
   font-family: 'Roboto', sans-serif;
-  background-color:  ${(props) => props.theme.bgColor};
-  color: ${(props) => props.theme.textColor};
+
 
 }
 a {
@@ -68,11 +69,11 @@ a {
 `;
 
 function App() {
+  
   return (
     <>
       <GlobalStyle />
-      <Router />
-      <ReactQueryDevtools initialIsOpen={true} />
+       <ToDoList />
     </>
   );
 }
