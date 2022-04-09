@@ -202,12 +202,43 @@ export const toDoSelector = selector({
 });
  
 ```
+### 0.6 get, set
+get함수를 이용해 state를 받아오고,
+그 state를 원하는 방식으로 출력하였다.
 
-get함수를 이용해 toDoState를 받아오고,
-필터함수로 해당 카테고리인것만 담은 새배열을
-리턴한다.
 
-동일하게, 필터를이용해 다른 카테고리도 작성하면 끝!
+이렇게 원하는 방식으로 바꾼 state를 
+수정하려면 set함수를 이용한다.
+
+set 사용법은  useRecoilValue를 State로 바꾼다.
+```tsx
+//App.tsx
+//수정 전
+const hours = useRecoilValue(hourSelector);
+
+//수정 후
+const [ hours, setHours ] = useRecoilState(hourSelector);/
+```
+왜냐하면 useRecoilValue는 값만 주는 대신,
+useRecoilState는 배열을 리턴하는데
+
+그 배열의 첫번째인자는 값, 두번째인자는 값을 변경할수있는 함수를 주기때문
+
+첫번째인자로는 hours = get함수로 설정한값
+두번째인자는 변경함수
+
+==즉 atom이나 selector로 useRecoilState를 쓰면,
+
+- 배열의 첫번째는 atom의 값이거나, selector의 get함수의 값이된다.
+
+- 두번째 인자는 atom을 수정하거나, selector의
+set property를 실행시키는 함수이다.
+
+set함수는 두개의 인자를 가지는데
+첫번째인자는 수정하고싶은 state, 두번째인자는 새로운값.
+
+
+
 
 
 
