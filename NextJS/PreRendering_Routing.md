@@ -50,7 +50,26 @@ export default function NavBar() {
   );
 }
 
+//a태그가 없어도 작동가능 
+import Link from "next/link";
+export default function NavBar() {
+  return (
+    <nav>
+      <Link href="/">
+        Home
+      </Link>
+      <Link href="/about">
+        About
+      </Link>
+    </nav>
+  );
+}
+
 ```
+물론 여기서 a태그를 빼고도 사용이 가능하지만,
+
+style이나 class를 줄때 Link에는 줄 수 없기때문에 a태그를 사용해준다.
+
 
 # Location얻기
 nextJS에서 제공하는 useRouter를 사용하면,
