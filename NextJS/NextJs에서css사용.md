@@ -12,19 +12,25 @@ NavBar.js 라는 파일의 css모듈파일을 만들고 싶다면,
 
 NavBar.module.css  
 
-모듈.css가 가장 중요하다.
+이름을 지을때가장 중요한건
+
+module.css로 끝나야한다.
+
+## css파일안에선
+
+원하는 class를 지어 사용하면된다.
 
 ```css
 /* NavBar.module.css  */
-.nav{
+.nav {
     display: flex;
-    justify-content: center;
-    background-color: tomato;
+    justify-content: space-between;
+    background-color: palevioletred;
 }
 ```
 
-## 02. 모듈 불러오기
-NavBar.js에서 사용할 것이기에 
+## 02. css모듈 사용하기
+먼저 NavBar.js에서 사용할 것이기에 
 css파일을 import해온다.
 ```js
 //NavBar.js
@@ -48,11 +54,15 @@ export default function NavBar() {
 }
 ```
 
-그리고 원하는 태그옆에 className으로 주면되는데
+그리고 원하는 태그옆에 class가 아닌 
 
-중요한건 텍스트로 style.nav가아니라 {style.nav}
+className으로 준다. 모듈은 className으로 작동한다.
 
-프로퍼티로 줘야한다.
+또 일반 텍스트가 아닌 프로퍼티로 줘야한다.
+
+nav가아니라 {style.nav}
+
+----------------------
 
 =>왜냐하면 개발자모드로 실제 해당css가 적용된 부분을 확인하면,
 
@@ -162,12 +172,66 @@ export default function NavBar() {
 그.리.고 개발자모드로 클래스를 확인하면 이또한
 랜덤으로 클래스를 변경해준다.
 
-이 클래스들은 작성된 해당 컴포넌트에만 스타일을 줄 수 있기에, 다른 컴포넌트에서 똑같이 nav를 해도 컬러가 바뀌지않는다.
+---------------------------------------------
+# 작성한 스타일을 다른곳에도 적용하려면?
+```js
+//NavBar.js
+export default function NavBar() {
+  const a = useRouter();
+  return (
+    <nav>
+      <Link href="/">
+             <a className={a.pathname === "/" ? "active" : ""} >Home</a>
+      </Link>
+      <Link href="/about">
+       <a className={a.pathname === "/about" ? "active" : ""}>About</a>
+      </Link>
+      <style jsx>{`
+        nav {
+          background-color: tomato;
+        }
+        a {
+          text-decoration: none;
+        }
+         .active {
+          color : yellow;
+      }
+      `}</style>
+    </nav>
+  );
+}
+```
+style태그의 제일마지막 .active부분을 추가하여, pathname이 일치할때 컬러가 노랑색으로 바뀌게했다.
+
+이 .active를 index.js의 hello부분에도 줘보자.
+
+```js
+//index.js
+import NavBar from "../components/NavBar";
+export default function Home(){
+
+    return (
+        <div>
+            <NavBar />
+              <h1 className="active"> Hello </h1>
+        </div>
+    );
+}
+```
+Home과 About은 노란색으로 잘바뀌는데
+
+이 Hello는 노란색으로 바뀌지 않는다.
+
+왜 일까?
+
+=> 개발자모드로 확인시 Hello도 active라는 className을 가지고있지만,
+ 
+style.jsx의 특징으로, jsx가 직접 작성된 그 컴포넌트 내에서만 해당 className이 작동한다.
 
 ---------------------------------------------
-# 스타일을 전역으로 쓰고싶다면?
+# Global Style을 만들려면?
 
-font-family처럼 내 프로젝트 전체에 사용하고 싶은
+reset-css처럼 내 프로젝트 전체에 사용하고 싶은
 스타일을 작성하려면?
 
 => 방법1 style jsx에 global을 추가한다.
@@ -206,7 +270,7 @@ NavBar.js에서 이미 콕 찝어 Home Link에 블루 컬러를 지정했고, Ab
 
 ## 방법2 이게 진짜방법 Custom App
 
-1. pages폴더에 _app.js 파일을 생성한다.
+1. pages폴더에 _app.js 파일을 생성한다.(무조건 이 이름쓰기)
 
 다른 파일(about.js,index.js를 보기전에 app.js를 먼저 보기때문)
 
@@ -266,4 +330,4 @@ NextJS는 style폴더에 globals.css라는 css파일을 가지고있는데,
 
 이 css파일을 일반 파일이나 내 컴포넌트에 import가 불가능하다.
 
- =>css모듈로 사용하거나,  custom app 파일에서만 가능하다.
+ =>css모듈로 사용하거나,   _app 파일에서만 가능하다.
