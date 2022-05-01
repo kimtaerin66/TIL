@@ -4,11 +4,10 @@ NextJS는 pre-render하기 때문에,
 
 예를 들어 api(data)를 받아오기전에 로딩화면도 html에서 찾아 볼 수 있는데, 이걸 유저가 보는게 싫을 수도 있다.
 
-그럼다시 csr로 바꿔준다.
+그럴때 모든 data를 다 받고나서 유저에게 보여주는
+SSR방식을 사용하면된다.
 
-[ SSR의 모습 ]
-
-## 해결법 
+## 사용법 
 
 getServerSideProps라는 함수를 만들어 export해주면 된다.
 
@@ -169,7 +168,8 @@ export async function getServerSideProps(){
 
 이 부분을 작성할때, fetch부분에 원래작성한대로 /api/movies로 넣으면 실행이 되지않는다.
 
-왜냐하면, 이 주소는 front에서만 작동한다(서버에서는 작동하지않음)
+왜냐하면, 이 SSR함수는 백엔드부분이다.
+주소는 front에서만 작동한다(서버에서는 작동하지않음)
 
 프론트엔드에는 이미 브라우저에 url이있음 localhost:3000
 
