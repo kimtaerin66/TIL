@@ -61,7 +61,10 @@ src폴더에 firebase.js파일을 만들고
 import와 initialize를 해준다.
 ```js
 //src/firebase.js
-import firebase from "firebase/app";
+import firebase from "firebase/compat/app";
+import "firebase/compat/auth";
+import "firebase/compat/firestore";
+import "firebase/compat/storage";
 
 const firebaseConfig = {
     apiKey: "AIzaSyBTvDgJjdpMkhkAtJJA6W0W0GJA94ZI3U8",
