@@ -41,7 +41,7 @@ interface ICandle {
 }
 
 const Container = styled.div`
-  width: 480px;
+  width: 600px;
   margin: 0 auto;
   background-color: #fff;
   height: 500px;
@@ -52,10 +52,11 @@ const DetailCoin = styled.div`
   align-items: center;
 `;
 const CoinName = styled.div`
+  margin-top: 50px;
   font-family: "GmarketSansBold";
   text-align: center;
-  font-size: 25px;
-  padding: 20px 0;
+  font-size: 30px;
+  padding: 30px 0;
   color: #353535;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 `;
@@ -64,14 +65,15 @@ const CoinPrice = styled.div<{ isPlus: boolean }>`
   margin: 15px;
   color: ${(props) =>
     props.isPlus ? props.theme.accentColor : props.theme.lowColor};
-  font-size: 23px;
+  font-size: 30px;
   font-family: "GmarketSansBold";
   span {
-    font-size: 12px;
+    padding-left: 5px;
+    font-size: 15px;
     font-family: "Noto Sans", sans-serif;
   }
   p:last-child {
-    font-size: 10px;
+    font-size: 13px;
   }
 `;
 

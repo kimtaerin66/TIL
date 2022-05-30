@@ -10,7 +10,7 @@ export function fetchAll() {
 export function fetchPrice(market: string) {
   return fetch(`${URL}/ticker?markets=${market}`).then((res) => res.json());
 }
-
+// (`https://api.upbit.com/v1/ticker?markets=KRW-XRP&count=14`)
 export function fetchCandles(market: string) {
   const endDate = Date.now();
   return fetch(`${URL}/candles/weeks?market=${market}&count=14`).then((res) =>

@@ -13,10 +13,10 @@ function Router({ toggle, darkMode }: IToggle) {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Home toggle={toggle}/>} />
+        <Route path="/thecoin" element={<Home toggle={toggle}/>} />
       </Routes>
       <Routes>
-        <Route path="/:market" element={<Detail darkMode={darkMode} />} />
+        <Route path="/thecoin/:market" element={<Detail darkMode={darkMode} />} />
       </Routes>
     </BrowserRouter>
   );
