@@ -260,3 +260,27 @@ onVaild의 if문 밖에 에러메세지를 적어준다.
 또, 서버에 관한에러이기때문에 특정 form아래가 
 
 제일하단에 표시하였다.
+
+## 10 특정 이름 사용못하게하기 validate
+
+이름이 RIN이거나 RIN을 포함하면, 사용X
+
+validate를 사용해서 사용못하게 할 수 있는데
+
+이 validate는 현재 입력된값을 받고,
+불린값을 리턴한다.
+
+validate : (curr) => false 
+
+이런식으로 작성할 수 있는데 false를 리턴하니 계속 넘어가지 않을것이다.
+
+그러니 RIN이 포함되지 않을때만 true가 되게 한다.
+```tsx
+      <input
+        {...register("firstname", { required: true, 
+        validate : (curr) => !curr.includes("RIN"),
+         })}
+          placeholder="firstname"
+        />
+```
+

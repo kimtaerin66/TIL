@@ -1,7 +1,16 @@
-import '../styles/globals.css'
-
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+export default function App({ Component, pageProps }) {
+  return (
+    <>
+      <Component {...pageProps} />
+      <style jsx global>{`
+        a {
+          color: yellow;
+        }
+      `}</style>
+    </>
+  );
 }
 
-export default MyApp
+//Custom App은 두개의 prop을 받아야하는데
+//첫번째는 Component,
+//두번째는 pageProps

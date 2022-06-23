@@ -77,3 +77,26 @@ export default function App() {
  ...을 붙여주면, btnText스타일을 전부가지고오고 + 원하는 개별 스타일을 추가가 가능하다.
 
  travel버튼의 조건은 반대로 작성해주면된다.
+
+ ----------------------------------------
+ # Tab에 맞는 내용만 보이게하기
+ 
+ 지금 work와 travel탭이 있는데 어떤 탭을 누르던 모든 내용이 다보이는 상태이다.
+
+ 그 탭에 맞는 내용만 보이게 해보자.
+
+ 이전에 만들어놓았던 working을 이용해, 상태를 확인하자.
+```js
+
+        <ScrollView>
+        {Object.keys(toDos).map(key => 
+        toDos[key].working === working ? (
+        <View style={styles.toDo} key={key}>
+         <Text style={styles.toDoText}>{toDos[key].text} </Text>
+          </View>
+          ) : null
+        )}
+        </ScrollView>
+```
+
+

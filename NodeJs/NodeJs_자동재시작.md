@@ -22,7 +22,7 @@ npm start시 node가 아닌, nodemon이 실행되도록 package.json을 수정�
 ```node
 <!-- package.json 수정 -->
 "scripts": {  
-	"start": "nodemon ./app.js  
+	"start": "nodemon ./app.js"  
 }
 
 <!-- nodeJs -->
