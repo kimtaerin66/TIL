@@ -1,4 +1,4 @@
-package study1;
+package study1_1;
 
 import java.util.Arrays;
 import java.util.Collections;
