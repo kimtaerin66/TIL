@@ -30,23 +30,22 @@ public class StudentMap {
        
        	
       
-		
+	
        	Scanner sc = new Scanner(System.in);
-		System.out.println("이름 또는 성을 입력하세요");
-       	
-      //user가 입력한 값.
-     	String inName = "신";
+		System.out.print("이름 또는 성을 입력하세요 : ");
+    	String keyName = sc.nextLine();    
+     	
      	
        //찾은 값을 넣을 list.
-		List<Student> 	stuResultList = new ArrayList<Student>();
+		List<Student> 	stuResult = new ArrayList<Student>();
 		// Map For 문
 		for(String key : stdMap.keySet() ) {
-			if(key.contains(inName)) {
-				stuResultList.add(stdMap.get(key));
+			if(key.contains(keyName)) {
+				stuResult.add(stdMap.get(key));
 			}
 			
 		}
-    	System.out.println(stuResultList);
+    	System.out.println(stuResult);
 
 //		if( stuResultList.size() > 0 ) {
 //			// 출력
