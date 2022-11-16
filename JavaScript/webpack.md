@@ -37,3 +37,42 @@ CommonJS에서는 모듈을 가져올때 : require
 
 내보낼때 : module.export
 
+### 예제 
+
+원의 넓이를 구하는 index.js파일을 하나만들어보자.
+
+```js
+
+const PI = 3.14;
+const getCircleArea = r => r* PI;
+
+const result = getCircleArea(2);
+console.log(result); //6.28 출력
+```
+
+이 파일을 모듈화하자면, 원을 구하는 공식을 따로 분리해보자.
+
+mathUtil.js라는 새파일을 만들고 코드를 이동시켰다.
+
+```js
+const PI = 3.14;
+const getCircleArea = r => r* PI;
+
+
+module.exports = {
+    PI,
+    getCircleArea
+}
+```
+
+이제 index.js에서 이 모듈을 불러서 사용해보자.
+
+```js
+//index.js
+const mathUtil = require('./mathUtil');
+
+const result = mathUtil(2);
+console.log(result); //6.28 출력
+```
+
+
