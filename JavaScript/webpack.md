@@ -63,6 +63,11 @@ module.exports = {
     PI,
     getCircleArea
 }
+
+//한개씩 내보낼때
+exports.PI = PI;
+exports.getCircleArea = getCircleArea;
+
 ```
 
 이제 index.js에서 이 모듈을 불러서 사용해보자.
